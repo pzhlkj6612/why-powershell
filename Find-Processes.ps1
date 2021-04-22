@@ -11,6 +11,12 @@
 
 # Compare the results.
 
+# > (!) Note
+# >   32-bit processes cannot access the modules of a 64-bit process.
+# >   If you try to get information about a 64-bit process from a 32-bit process, you will get a Win32Exception exception.
+# >   A 64-bit process, on the other hand, can access the modules of a 32-bit process.
+# from: https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process#remarks
+
 Get-Process | Where-Object { $_.ProcessName -ieq 'PowerShell' } | Format-List Name, Id, Path
 
 # Why don't you ask... the Magic WMI, Squidward?
